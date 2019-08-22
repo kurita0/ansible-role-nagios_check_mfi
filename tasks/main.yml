@@ -1,0 +1,21 @@
+---
+- name: Get check_mfi
+  get_url:
+    url: 'https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=2715&cf_id=24'
+    dest: /usr/local/libexec/nagios/check_mfi
+
+- name: Apply patch to check_mfi
+  patch:
+    src: check_mfi.patch
+    dest: /usr/local/libexec/nagios/check_mfi
+
+- name: Set permissions for check_mfi
+  file:
+    path: /usr/local/libexec/nagios/check_mfi
+    mode: '0555'
+
+- name: Set sudoers.d check_mfi
+  copy: src=sudoers_check_mfi dest=/usr/local/etc/sudoers.d/check_mfi mode=0644
+
+- template: src=check_mfi.cfg.j2 dest=/usr/local/etc/nrpe.d/check_mfi.cfg mode=0644 backup=yes
+  notify: restart nrpe3

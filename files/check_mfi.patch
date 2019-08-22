@@ -1,0 +1,17 @@
+--- check_mfi.orig	2019-07-19 22:51:21.297842000 +0900
++++ check_mfi	2019-07-19 22:56:56.877430000 +0900
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/local/bin/perl -w
+ 
+ # check_mfi Nagios plugin
+ # Copyright (C) 2011  Jonathan Delgado, delgado@molbio.mgh.harvard.edu
+@@ -44,7 +44,7 @@ if ( $opt_h ) {
+ }
+ 
+ my $mfiutilbin = '/usr/sbin/mfiutil';  # the default path to the mfiutil binary
+-my $mfiutil = "sudo $mfiutilbin";      # how we actually call mfiutil
++my $mfiutil = "/usr/local/bin/sudo $mfiutilbin";      # how we actually call mfiutil
+ 
+ my $adapters = 1;
+ my $hotspares = 0;

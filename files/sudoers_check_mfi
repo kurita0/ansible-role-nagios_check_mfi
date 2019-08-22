@@ -1,0 +1,2 @@
+nagios ALL=(root) NOPASSWD: /usr/sbin/mfiutil -u 0 show drives
+nagios ALL=(root) NOPASSWD: /usr/sbin/mfiutil -u 0 show volumes
